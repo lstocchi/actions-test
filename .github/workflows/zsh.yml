@@ -1,0 +1,19 @@
+name: Test zsh and devenv
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:        
+      - name: Setup dotfiles
+        uses: gbraad-dotfiles/install-action@main
+        
+      - name: Run devenv in zsh
+        uses: gbraad-actions/zsh-action@main
+        with:
+          run: |
+            # All your devenv commands here
+            devenv dotfedora exec cat /etc/os-release
+            devenv dotfedora exec systemctl status --no-pager
