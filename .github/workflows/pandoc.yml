@@ -13,10 +13,10 @@ jobs:
         uses: gbraad-actions/pandoc@main
         with:
           source: "docs/*.md"
-          output-format: pdf
-          output-dir: pdf-output
+          output-format: html
+          output-dir: html-output
 
       - uses: actions/upload-artifact@v4
         with:
           name: output
-          path: ./pdf-output/*.pdf
+          path: ./html-output/*.html
