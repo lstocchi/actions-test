@@ -7,8 +7,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Build project
-        uses: gbraad-actions/fedora-action@main
+      - name: Docker
+        uses: gbraad-actions/fedora-docker-action@main
+        with:
+          dnf-packages: cowsay
+          run: |
+            cowsay Hello
+
+      - name: Podman
+        uses: gbraad-actions/fedora-podman-action@main
         with:
           dnf-packages: cowsay
           run: |
