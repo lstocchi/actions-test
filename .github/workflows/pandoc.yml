@@ -7,6 +7,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Pandoc
         uses: gbraad-actions/pandoc@main
         with:
@@ -14,8 +16,7 @@ jobs:
           output-format: pdf
           output-dir: pdf-output
 
-      - name: Upload to release
-        uses: softprops/action-gh-release@v1
+      - uses: actions/upload-artifact@v4
         with:
-          tag_name: output
-          files: ./pdf-output/*.pdf
+          name: output
+          path: ./pdf-output/*.pdf
