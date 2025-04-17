@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pandoc
+        uses: gbraad-actions/pandoc@main
+        with:
+          source: "docs/*.md"
+          output-format: pdf
+          output-dir: pdf-output
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: output
+          files: *.pdf
