@@ -18,5 +18,17 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: output
+          name: html-output
           path: ./html-output/*.html
+
+      - name: Pandoc
+        uses: gbraad-actions/pandoc@main
+        with:
+          source: "docs/*.md"
+          output-format: pdf
+          output-dir: pdf-output
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdf-output
+          path: ./pdf-output/*.pdf
