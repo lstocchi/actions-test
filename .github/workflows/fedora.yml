@@ -26,6 +26,7 @@ jobs:
         uses: gbraad-actions/podman-action@main
         with:
           image: ghcr.io/gbraad-actions/fedora:stable
+          entrypoint: /bin/bash
           run: |
             dnf install -y cowsay
             cowsay Hello
