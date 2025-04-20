@@ -27,6 +27,7 @@ jobs:
           password: ${{ secrets.USER_PASSWORD }}
 
       - uses: gbraad-actions/install-vscode-action@main
+      - uses: gbraad-actions/install-podman-action@main
 
       - name: Hang around
         run: |
