@@ -17,11 +17,12 @@ jobs:
           oauth-secret: ${{ secrets.TAILSCALE_SECRET }}
           tags: tag:actions
       - name: Enable RDP
-        run: |
-          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-          Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-          Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "${{ secrets.USER_PASSWORD }}" -Force)
+        uses: gbraad-actions/enable-rdp-action@main
+      - name: Set Local User Credentials
+        uses: gbraad-actions/set-user-credentials@main
+        with:
+          username: 'runneradmin'
+          password: ${{ secrets.USER_PASSWORD }}
       - name: Hang around
         run: |
           Start-Sleep -Seconds 21600
