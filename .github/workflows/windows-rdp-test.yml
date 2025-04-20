@@ -15,6 +15,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TAILSCALE_CLIENTID }}
           oauth-secret: ${{ secrets.TAILSCALE_SECRET }}
+          tags: tag:actions
       - name: Enable RDP
         run: |
           Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
