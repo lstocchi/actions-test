@@ -10,19 +10,24 @@ jobs:
     timeout-minutes: 9999
 
     steps:
+
       - name: Tailscale
         uses: tailscale/github-action@v3
         with:
           oauth-client-id: ${{ secrets.TAILSCALE_CLIENTID }}
           oauth-secret: ${{ secrets.TAILSCALE_SECRET }}
           tags: tag:actions
+
       - name: Enable RDP
-        uses: gbraad-actions/enable-rdp-action@main
+        uses: gbraad-actions/enable-remote-desktop@main
       - name: Set Local User Credentials
         uses: gbraad-actions/set-user-credentials@main
         with:
           username: 'runneradmin'
           password: ${{ secrets.USER_PASSWORD }}
+
+      - uses: gbraad-actions/install-vscode-action@main
+
       - name: Hang around
         run: |
           Start-Sleep -Seconds 21600
