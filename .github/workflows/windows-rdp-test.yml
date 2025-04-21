@@ -32,7 +32,7 @@ jobs:
         run: |
           podman machine init
           podman machine start
-          $Env:DOCKER_HOST = 'npipe:////./pipe/podman-machine-default'
+          podman run hello-world
 
       - name: Run VS Code serve-web
         run: |
