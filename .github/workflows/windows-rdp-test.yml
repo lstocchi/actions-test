@@ -41,6 +41,9 @@ jobs:
             code serve-web --host 0.0.0.0 --without-connection-token
           }
 
+      - uses: gbraad-actions/install-steam-action@main
+
       - name: Hang around
+        if: ${{ always() }}
         run: |
           Start-Sleep -Seconds 21600
