@@ -34,9 +34,9 @@ jobs:
       #    podman machine start
       #    podman run hello-world
 
-      - name: Run VS Code serve-web
-        run: |
-          code serve-web --host 0.0.0.0 --without-connection-token
+      #- name: Run VS Code serve-web
+      #  run: |
+      #    code serve-web --host 0.0.0.0 --without-connection-token
 
       - name: Hang around
         run: |
