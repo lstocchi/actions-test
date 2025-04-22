@@ -28,11 +28,11 @@ jobs:
 
       - uses: gbraad-actions/install-vscode-action@main
       - uses: gbraad-actions/install-podman-action@main
-      - name: Initialize Podman machine
-        run: |
-          podman machine init
-          podman machine start
-          podman run hello-world
+      #- name: Initialize Podman machine
+      #  run: |
+      #    podman machine init
+      #    podman machine start
+      #    podman run hello-world
 
       - name: Run VS Code serve-web
         run: |
